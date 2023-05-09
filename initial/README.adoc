@@ -37,6 +37,9 @@ iwconfig
 ----
 
 download openCR 12v power supply
+$ cd ./opencr_update
+$ ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
+
 
 look camera pixel format
 http://wiki.ros.org/usb_cam/Troubleshooting
