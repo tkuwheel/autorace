@@ -1,0 +1,6 @@
+<launch>
+
+<include file="$(find usb_cam)/launch/normal_cam.launch" />
+<include file="$(find usb_cam)/launch/fish_cam.launch" />
+
+</launch>
