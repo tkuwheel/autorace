@@ -80,8 +80,15 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
         ros-noetic-turtlebot3-msgs \
         ros-noetic-gmapping \
         ros-noetic-hls-lfcd-lds-driver \
+        python3-rosdep \
+        python3-rosinstall \
+        python3-rosinstall-generator \
+        python3-wstool \
         python3-catkin-tools \
+        libc6:armhf \
         && \
+    rosdep init && \
+    su - "${USER}" -c "rosdep update" && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 

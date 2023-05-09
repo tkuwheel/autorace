@@ -65,6 +65,10 @@ RUN apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
+# * Install pytorch-YOLOv4
+RUN git clone https://github.com/Tianxiaomo/pytorch-YOLOv4 /home/"${USER}"/pytorch-YOLOv4 && \
+    chown -R "${USER}":"${GROUP}" /home/"${USER}"/pytorch-YOLOv4
+
 # * Install ROS desktop full
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > \
     /etc/apt/sources.list.d/ros-latest.list' && \
@@ -77,9 +81,15 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
         ros-noetic-turtlebot3-msgs \
         ros-noetic-gmapping \
         ros-noetic-hls-lfcd-lds-driver \
+        python3-rosdep \
+        python3-rosinstall \
+        python3-rosinstall-generator \
+        python3-wstool \
         python3-catkin-tools \
         libc6:armhf \
         && \
+    rosdep init && \
+    su - "${USER}" -c "rosdep update" && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -92,10 +102,6 @@ ENV TURTLEBOT3_MODEL=burger
 ENV LDS_MODEL=LDS-01
 ENV OPENCR_PORT=/dev/opencr
 ENV OPENCR_MODEL=burger_noetic
-
-# * Install pytorch-YOLOv4
-RUN git clone https://github.com/Tianxiaomo/pytorch-YOLOv4 /home/"${USER}"/pytorch-YOLOv4 && \
-    chown -R "${USER}":"${GROUP}" /home/"${USER}"/pytorch-YOLOv4
 
 ############################### OTHER #######################################
 # * Copy entrypoint
