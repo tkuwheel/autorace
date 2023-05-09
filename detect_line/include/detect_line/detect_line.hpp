@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 #include <opencv2/core/core.hpp>
-#include <opencv/imgcodecs.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui/highgui.hpp>
 /*******************************
  * Include ROS header files

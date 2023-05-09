@@ -27,10 +27,10 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 # node: node_test
 set(${PROJECT_NAME}_NT_LIST
   src/node_handle.cpp
-  test/node_test.cpp
+  test/ros_node_test.cpp
 )
-add_executable(node_test ${${PROJECT_NAME}_NT_LIST})
-target_link_libraries(node_test ${catkin_LIBRARIES})
+add_executable(ros_node_test ${${PROJECT_NAME}_NT_LIST})
+target_link_libraries(ros_node_test ${catkin_LIBRARIES})
 
 # add_dependencies(node_test ${catkin_EXPORTED_TARGETS})
 

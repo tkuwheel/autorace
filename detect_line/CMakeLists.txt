@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(detect_line)
+cmake_policy(SET CMP0079 NEW)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
