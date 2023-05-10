@@ -1,0 +1,25 @@
+# install python dep
+matplotlib==3.4.3
+tensorboardX==2.0
+scikit_image==0.20.0
+tqdm==4.43.0
+easydict==1.9
+# opencv_python
+opencv_python==4.7.0.72
+# pycocotools==2.0.6
+
+# # pytorch
+# aiohttp
+# numpy==1.19.4
+# scipy==1.5.3
+# protobuf
+
+# pytorch-YOLOv4
+# torch==2.0.0
+# tensorboardX==2.0
+# scikit_image==0.20.0
+# matplotlib==2.2.3
+# tqdm==4.43.0
+# easydict==1.9
+# # opencv_python==4.7.0.72
+# pycocotools==2.0.6
