@@ -305,7 +305,7 @@ class DetectLane():
 
         # Find the peak of the left and right halves of the histogram
         # These will be the starting point for the left and right lines
-        midpoint = np.int(histogram.shape[0] / 2)
+        midpoint = np.int_(histogram.shape[0] / 2)
 
         if left_or_right == 'left':
             lane_base = np.argmax(histogram[:midpoint])
@@ -316,7 +316,7 @@ class DetectLane():
         nwindows = 20
 
         # Set height of windows
-        window_height = np.int(img_w.shape[0] / nwindows)
+        window_height = np.int_(img_w.shape[0] / nwindows)
 
         # Identify the x and y positions of all nonzero pixels in the image
         nonzero = img_w.nonzero()
@@ -355,7 +355,7 @@ class DetectLane():
 
             # If you found > minpix pixels, recenter next window on their mean position
             if len(good_lane_inds) > minpix:
-                x_current = np.int(np.mean(nonzerox[good_lane_inds]))
+                x_current = np.int_(np.mean(nonzerox[good_lane_inds]))
 
         # Concatenate the arrays of indices
         lane_inds = np.concatenate(lane_inds)
@@ -446,7 +446,7 @@ class DetectLane():
             msg_desired_center.data = centerx.item(350)
             if self.lane_toggle == True:
                 self.pub_lane_center.publish(msg_desired_center)
-            # rospy.loginfo(msg_desired_center)
+                rospy.loginfo(msg_desired_center)
 
         self.pub_lane.publish(self.cvBridge.cv2_to_compressed_imgmsg(final, "jpg"))
 
