@@ -1,12 +1,6 @@
 FROM dustynv/ros:noetic-pytorch-l4t-r35.2.1
 ############################## SYSTEM PARAMETERS ##############################
 # * Arguments
-ARG USER=initial
-ARG GROUP=initial
-ARG UID=1000
-ARG GID="${UID}"
-ARG SHELL=/bin/bash
-ARG HARDWARE=x86_64
 ARG ENTRYPOINT_FILE=entrypint.sh
 
 # * Env vars for the nvidia-container-runtime.
@@ -27,10 +21,7 @@ RUN ln -snf /usr/share/zoneinfo/"${TZ}" /etc/localtime && echo "${TZ}" > /etc/ti
 # * Copy entrypoint
 # ? Requires docker version >= 17.09
 COPY --chmod=0775 ./${ENTRYPOINT_FILE} /entrypoint.sh
-
-# * Copy custom configuration
 COPY --chmod=0775 config config
-
 # ? docker version < 17.09
 # COPY ./${ENTRYPOINT_FILE} /entrypoint.sh
 # RUN sudo chmod 0775 /entrypoint.sh
@@ -106,7 +97,7 @@ RUN ./config/shell/bash_setup_for_root.sh && \
     sudo rm -rf /config
 
 # * Switch workspace to /home/"${USER}"/work
-RUN sudo mkdir /root/work
+RUN sudo mkdir -p /root/work
 
 WORKDIR /root/work
 
