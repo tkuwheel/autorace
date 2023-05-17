@@ -1,6 +1,6 @@
 <launch>
 
-    <node name="normal_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+    <node name="camera" pkg="usb_cam" type="usb_cam_node" output="screen">
         <!-- <rosparam command="load" file="$(find usb_cam)/config/usb_cam.yml"/> -->
         <param name="video_device" value="/dev/normal" />
         <param name="image_width" value="480" />
@@ -8,6 +8,11 @@
         <param name="pixel_format" value="yuyv" />
         <param name="camera_frame_id" value="normal_cam" />
         <param name="io_method" value="mmap" />
+    </node>
+
+    <node name="republish" pkg="image_transport" type="republish" args="compressed">
+      <remap from="in"  to="camera/image_raw" />
+      <remap from="out"   to="camera/image"/>
     </node>
 
 </launch>
