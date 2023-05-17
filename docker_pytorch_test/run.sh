@@ -7,11 +7,11 @@ docker run --rm \
     --privileged \
     --network=host \
     --ipc=host \
-    --gpus all \
-    -v /home/"${user}"/.Xauthority:/home/"${user}"/.Xauthority \
+    ${GPU_FLAG} \
     -e XAUTHORITY=/home/"${user}"/.Xauthority \
     -e DISPLAY="${DISPLAY}" \
     -e QT_X11_NO_MITSHM=1 \
+    -v /tmp/.Xauthority:/home/"${user}"/.Xauthority:rw \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v /etc/timezone:/etc/timezone:ro \
     -v /etc/localtime:/etc/localtime:ro \
